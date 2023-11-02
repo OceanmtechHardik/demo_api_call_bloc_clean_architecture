@@ -8,6 +8,7 @@ abstract class HomePageWidget extends State<HomePageScreen> {
   @override
   void initState() {
     homePageCubit = getItInstance<HomePageCubit>();
+    homePageCubit.loadInitialData();
     super.initState();
   }
 
@@ -15,5 +16,16 @@ abstract class HomePageWidget extends State<HomePageScreen> {
   void dispose() {
     homePageCubit.close();
     super.dispose();
+  }
+
+  Widget loadedView({required HomePageLoadedState state}) {
+    return ListView.builder(
+      itemCount: state.homePageEnity.length,
+      itemBuilder: (context, index) {
+        return const ListTile(
+          title: Text("hello"),
+        );
+      },
+    );
   }
 }

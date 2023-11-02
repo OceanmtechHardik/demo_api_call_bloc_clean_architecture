@@ -1,7 +1,5 @@
 import 'dart:io';
 
-
-
 import 'package:dartz/dartz.dart';
 import 'package:demo_api_call_bloc_clean_architecture/app_errors.dart';
 import 'package:demo_api_call_bloc_clean_architecture/core/api_client.dart';
@@ -19,7 +17,6 @@ class HomePageSourceImpl extends HomePageSource {
   final ApiClient client;
 
   HomePageSourceImpl({required this.client});
-
 
   @override
   Future<Either<AppError, List<HomePageEntity>>> getHomePageData({required NoParams noParams}) async {

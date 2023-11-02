@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+
 import 'package:demo_api_call_bloc_clean_architecture/core/api_constants.dart';
 import 'package:demo_api_call_bloc_clean_architecture/core/unathorised_exception.dart';
 import 'package:dio/dio.dart';
@@ -9,12 +10,12 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class ApiClient {
-  final http.Client _apiClient;
+  final http.Client _client;
 
-  ApiClient(this._apiClient);
+  ApiClient(this._client);
 
   dynamic get(String path, {Map<dynamic, dynamic>? params, Map<String, String>? header}) async {
-    final response = await _apiClient.get(
+    final response = await _client.get(
       getPath(path, params),
       headers: header ?? ApiConstatnts().headers,
     );
@@ -41,7 +42,7 @@ class ApiClient {
   }
 
   dynamic directGet({required String url, Map<dynamic, dynamic>? params, Map<String, String>? header}) async {
-    final response = await _apiClient.get(
+    final response = await _client.get(
       getDirectPath(url: url, params: params),
       headers: header ?? ApiConstatnts().headers,
     );
@@ -67,7 +68,7 @@ class ApiClient {
   }
 
   dynamic post(String path, {Map<dynamic, dynamic>? params, Map<String, String>? header}) async {
-    final response = await _apiClient.post(
+    final response = await _client.post(
       getPath(path, null),
       body: jsonEncode(params),
       headers: path == '/login'
@@ -95,7 +96,7 @@ class ApiClient {
   }
 
   dynamic directPost({required String url, required Map<dynamic, dynamic> params, Map<String, String>? header}) async {
-    final response = await _apiClient.post(
+    final response = await _client.post(
       Uri.parse(url),
       body: jsonEncode(params),
       headers: header ?? {'Content-Type': 'application/json', "Accept": 'application/json'},
@@ -177,9 +178,9 @@ class ApiClient {
     request.headers['X-localization'] = ApiConstatnts.xLocalization;
     request.headers['Content-Type'] = 'application/json';
     request.headers['Accept'] = 'application/json';
-
+    // request.headers['Authorization'] = AppFunctions().getUserToken() ?? '';
     request.body = jsonEncode(params);
-    final response = await _apiClient.send(request).then(
+    final response = await _client.send(request).then(
           (value) => http.Response.fromStream(value),
         );
 

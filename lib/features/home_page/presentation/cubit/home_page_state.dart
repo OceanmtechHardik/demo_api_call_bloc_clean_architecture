@@ -22,10 +22,11 @@ class HomePageLoadingState extends HomePageState {
 }
 
 class HomePageLoadedState extends HomePageState {
-  const HomePageLoadedState();
+  final List<HomePageEntity> homePageEnity;
+  const HomePageLoadedState({required this.homePageEnity});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [homePageEnity];
 }
 
 class HomePageErrorState extends HomePageState {

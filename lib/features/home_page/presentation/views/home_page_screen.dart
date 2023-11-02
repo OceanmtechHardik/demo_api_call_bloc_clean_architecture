@@ -15,16 +15,17 @@ class _HomePageScreenState extends HomePageWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("HomePage", style: Theme.of(context).textTheme.titleLarge),
+        title: Text("Home page", style: Theme.of(context).textTheme.titleLarge),
       ),
       body: BlocBuilder<HomePageCubit, HomePageState>(
         bloc: homePageCubit,
         builder: (context, state) {
-          return ListView.builder(
-            itemBuilder: (context, index) {
-              return const ListTile();
-            },
-          );
+          if (state is HomePageLoadedState) {
+            return loadedView(state: state);
+          } else if (state is HomePageLoadingState) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          return const SizedBox.shrink();
         },
       ),
     );
