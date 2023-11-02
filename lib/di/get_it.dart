@@ -1,4 +1,5 @@
 import 'package:demo_api_call_bloc_clean_architecture/core/api_client.dart';
+import 'package:demo_api_call_bloc_clean_architecture/features/home_page/data/data_sources/home_page_sources.dart';
 import 'package:demo_api_call_bloc_clean_architecture/features/home_page/presentation/cubit/home_page_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
@@ -14,6 +15,7 @@ Future init() async {
 
   //Data source Dependency
   // getItInstance.registerLazySingleton<DmtRemoteDataSource>(() => DmtRemoteDataSourceImpl(client: getItInstance()));
+   getItInstance.registerLazySingleton<HomePageSource>(() => HomePageSourceImpl(client: getItInstance()));
 
   //Data Repository Dependency
   // getItInstance.registerLazySingleton<DMTRemoteRepository>(() => DMTRemoteRepositoryImpl(dmtRemoteDataSource: getItInstance()));
