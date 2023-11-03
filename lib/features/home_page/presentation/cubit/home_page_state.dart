@@ -30,8 +30,11 @@ class HomePageLoadedState extends HomePageState {
 }
 
 class HomePageErrorState extends HomePageState {
-  const HomePageErrorState();
+  final AppErrorType appErrorType;
+  final String errorMessage;
+
+  const HomePageErrorState({required this.appErrorType, required this.errorMessage});
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [appErrorType, errorMessage];
 }

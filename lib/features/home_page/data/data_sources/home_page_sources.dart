@@ -26,6 +26,8 @@ class HomePageSourceImpl extends HomePageSource {
           header: ApiConstatnts().headers);
       final parseData = HomePageModel.fromJson(productData);
 
+     
+
       if (parseData.status == 200 && parseData.success == "true" && parseData.data.isNotEmpty) {
         return Right(parseData.data[0].productData);
       } else if (parseData.status == 404) {
