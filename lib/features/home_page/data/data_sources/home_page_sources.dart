@@ -24,9 +24,11 @@ class HomePageSourceImpl extends HomePageSource {
       final productData = await client.get(
           'https://praticle-service.s3.ap-south-1.amazonaws.com/intermidiate_task.json',
           header: ApiConstatnts().headers);
+
       final parseData = HomePageModel.fromJson(productData);
 
-     
+  
+
 
       if (parseData.status == 200 && parseData.success == "true" && parseData.data.isNotEmpty) {
         return Right(parseData.data[0].productData);

@@ -76,23 +76,15 @@ abstract class HomePageWidget extends State<HomePageScreen> {
                 fontSize: 16,
               ),
             ),
-            commonText(
-              keyText: 'Category :',
-              valueText: homePageData.averageRating,
-            ),
-            commonText(
-              keyText: 'Price :',
-              valueText: '₹${homePageData.discountPrice}',
-            ),
-            commonText(
-              keyText: 'Rate :',
-              valueText: homePageData.averageRating,
-            ),
+            commonText(keyText: 'Category :', valueText: homePageData.categoryName),
+            commonText(keyText: 'Price :', valueText: '₹${homePageData.discountPrice}'),
+            commonText(keyText: 'Rate :', valueText: homePageData.averageRating),
           ]),
     );
   }
 
   Widget productImageview({required HomePageEntity homePageData}) {
+    print(homePageData.images);
     return Padding(
       padding: const EdgeInsets.only(right: 8),
       child: SizedBox(

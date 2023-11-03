@@ -36,12 +36,27 @@ class ProductDataList {
     required this.unSold,
   });
 
-  factory ProductDataList.fromJson(Map<String, dynamic> json) => ProductDataList(
-        productData: List<HomePageEntity>.from(json["ProductData"].map((x) => ProductData.fromJson(x))),
-        pagination: json["pagination"],
-        sold: json["Sold"],
-        unSold: json["UnSold"],
-      );
+  factory ProductDataList.fromJson(Map<String, dynamic> json) {
+    List<HomePageEntity> productData =
+        List<HomePageEntity>.from(json["ProductData"].map((x) => ProductData.fromJson(x)));
+
+    // List<Map<String, String>> images = json["Images"];
+
+    // String myUrl =  images.isNotEmpty ? images[0]['url'] as String: '';
+
+    // for (var element in productData) {
+    //   element.images = myUrl;
+    // }
+
+  
+
+    return ProductDataList(
+      productData: productData,
+      pagination: json["pagination"],
+      sold: json["Sold"],
+      unSold: json["UnSold"],
+    );
+  }
 }
 
 class ProductData extends HomePageEntity {
@@ -76,7 +91,7 @@ class ProductData extends HomePageEntity {
   final String averageRating;
   final String totalUser;
 
-  const ProductData({
+  ProductData({
     required this.id,
     required this.userId,
     required this.userName,
