@@ -93,8 +93,8 @@ abstract class HomePageWidget extends State<HomePageScreen> {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Image.network(
-            fit: BoxFit.cover,
-            homePageData.userProfile,
+            homePageData.images[0],
+            fit: BoxFit.fill,
             errorBuilder: (context, error, stackTrace) => const SizedBox.shrink(),
           ),
         ),

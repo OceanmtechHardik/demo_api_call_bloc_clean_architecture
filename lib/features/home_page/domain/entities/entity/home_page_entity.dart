@@ -22,7 +22,7 @@ class HomePageEntity extends Equatable {
   final String deliveryCharge;
   final String description;
   final String condition;
-  final String images;
+  final List images;
   final String negotiation;
   final SoldStatus soldStatus;
   final String productType;

@@ -1,5 +1,7 @@
 // ignore_for_file: overridden_fields, annotate_overrides, constant_identifier_names
 
+import 'dart:convert';
+
 import 'package:demo_api_call_bloc_clean_architecture/features/home_page/domain/entities/entity/home_page_entity.dart';
 
 class HomePageModel {
@@ -80,7 +82,7 @@ class ProductData extends HomePageEntity {
   final String deliveryCharge;
   final String description;
   final String condition;
-  final String images;
+  final List images;
   final String negotiation;
   final SoldStatus soldStatus;
   final String productType;
@@ -176,7 +178,7 @@ class ProductData extends HomePageEntity {
         deliveryCharge: json["DeliveryCharge"],
         description: json["Description"],
         condition: json["Condition"],
-        images: json["Images"],
+        images: (jsonDecode(json['Images']) as List).map((item) => item['url'].toString()).toList(),
         negotiation: json["Negotiation"],
         soldStatus: soldStatusValues.map[json["SoldStatus"]]!,
         productType: json["ProductType"],
