@@ -22,7 +22,7 @@ class HomePageCubit extends Cubit<HomePageState> {
         }
       },
       (data) {
-        print("object");
+       
         emit(HomePageLoadedState(homePageEnity: data));
       },
     );

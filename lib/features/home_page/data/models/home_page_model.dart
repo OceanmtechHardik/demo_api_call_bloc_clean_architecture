@@ -93,7 +93,7 @@ class ProductData extends HomePageEntity {
   final String averageRating;
   final String totalUser;
 
-  ProductData({
+  const ProductData({
     required this.id,
     required this.userId,
     required this.userName,

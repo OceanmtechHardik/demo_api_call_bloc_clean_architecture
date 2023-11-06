@@ -13,7 +13,7 @@ class HomePageRempositiriesImpl extends HomePageRemoteRepositories {
   Future<Either<AppError, List<HomePageEntity>>> getHomePageData({required NoParams noParams}) async {
     try {
       final result = await homePageSource.getHomePageData(noParams: noParams);
-      print("=========${result}");
+     
       return result;
     } on Exception {
       throw Exception('Something goes wrong.');

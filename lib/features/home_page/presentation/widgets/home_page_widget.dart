@@ -84,7 +84,6 @@ abstract class HomePageWidget extends State<HomePageScreen> {
   }
 
   Widget productImageview({required HomePageEntity homePageData}) {
-    print(homePageData.images);
     return Padding(
       padding: const EdgeInsets.only(right: 8),
       child: SizedBox(
@@ -131,9 +130,9 @@ abstract class HomePageWidget extends State<HomePageScreen> {
 }
 
 Widget filterData() {
-  return PopupMenuButton(
+  return PopupMenuButton<sortOption>(
     itemBuilder: (context) {
-      return [];
+      return PopupMenuItem(child: Taxt('A to Z'),);
     },
   );
 }
